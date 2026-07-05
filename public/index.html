@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scramjet Proxy | Cappy</title>
   <meta name="robots" content="noindex" />
-  <link rel="stylesheet" href="/index.css" />
-  <script src="/bootstrap-init.js"></script>
+  <link rel="stylesheet" href="index.css" />
+  <script src="config.js"></script>
+  <script src="bootstrap-init.js"></script>
 </head>
 <body>
   <div id="app">
@@ -20,6 +21,15 @@
         <h1>Scramjet Proxy</h1>
       </div>
       <p class="tagline">Browse the web freely. No censorship, no restrictions.</p>
+    </div>
+
+    <div id="wisp-banner" class="wisp-banner" style="display:none;">
+      <p>No Wisp server configured. The proxy will not work without one.</p>
+      <details>
+        <summary>How to configure</summary>
+        <p>Edit <code>config.js</code> and set <code>WISP_URL</code> to your Wisp WebSocket server address (e.g. <code>wss://your-server.com/wisp/</code>).</p>
+        <p>You can run a Wisp server using <a href="https://github.com/MercuryWorkshop/wisp-js" target="_blank" rel="noopener">wisp-js</a> or deploy the full Node.js server from this repo.</p>
+      </details>
     </div>
 
     <div class="search-section">
@@ -97,6 +107,6 @@
     <iframe id="sj-frame" class="frame"></iframe>
   </div>
 
-  <script src="/index.js"></script>
+  <script src="index.js"></script>
 </body>
 </html>

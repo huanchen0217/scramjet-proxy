@@ -10,16 +10,27 @@ const forwardBtn = document.getElementById("sj-forward");
 const reloadBtn = document.getElementById("sj-reload");
 const homeBtn = document.getElementById("sj-home");
 const closeBtn = document.getElementById("sj-close");
+const wispBanner = document.getElementById("wisp-banner");
 
 let controller;
 let frame;
+let frameUrlText = "";
+let currentWispUrl = "";
 
 async function init() {
   controller = await initBootstrap();
-
+  
+  // Check for Wisp URL configuration
+  if (window.WISP_URL) {
+    currentWispUrl = window.WISP_URL;
+  } else {
+    // Show banner if no Wisp URL is set
+    wispBanner.style.display = "block";
+  }
+  
   const cachePlugin = new $scramjetUtils.HttpCachePlugin();
   const urlWatcher = new $scramjetUtils.UrlWatcherPlugin((url) => {
-    frameUrl.textContent = url;
+    frameUrlText = url;
   });
   const catchEscapedLinks = new $scramjetUtils.CatchEscapedLinksPlugin(
     (url) => new URL(`/?goto=${encodeURIComponent(url.href)}`, location.origin)
@@ -58,7 +69,6 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
-// Browser navigation buttons
 backBtn.addEventListener("click", () => frame?.back());
 forwardBtn.addEventListener("click", () => frame?.forward());
 reloadBtn.addEventListener("click", () => frame?.reload());
@@ -73,7 +83,7 @@ closeBtn.addEventListener("click", () => {
   address.focus();
 });
 
-// Keyboard shortcut: Escape closes the frame
+// Keyboard shortcuts
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape" && frameWrapper.style.display === "flex") {
     frameWrapper.style.display = "none";
@@ -81,7 +91,7 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// Auto-navigate if ?goto= is in the URL
+// Handle ?goto= parameter
 const goto = new URL(location.href).searchParams.get("goto");
 if (goto) {
   history.replaceState(null, "", location.pathname);
