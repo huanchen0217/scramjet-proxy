@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scramjet Proxy | Cappy</title>
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="/index.css" />
+  <script src="/bootstrap-init.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div class="header">
+      <div class="logo">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 4L42 14V34L24 44L6 34V14L24 4Z" stroke="#f1855b" stroke-width="2" fill="rgba(241,133,91,0.1)"/>
+          <path d="M24 14L34 20V30L24 36L14 30V20L24 14Z" fill="#f1855b" opacity="0.3"/>
+          <circle cx="24" cy="25" r="4" fill="#fdd76c"/>
+        </svg>
+        <h1>Scramjet Proxy</h1>
+      </div>
+      <p class="tagline">Browse the web freely. No censorship, no restrictions.</p>
+    </div>
+
+    <div class="search-section">
+      <form id="sj-form" class="search-form">
+        <input id="sj-search-engine" value="https://www.google.com/search?q=%s" type="hidden" />
+        <div class="omnibox">
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="M21 21l-4.35-4.35"/>
+          </svg>
+          <input id="sj-address" type="text" placeholder="Enter a URL or search the web" autocomplete="off" />
+        </div>
+      </form>
+      <div id="sj-error" class="error"></div>
+      <pre id="sj-error-code" class="error-code"></pre>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f1855b" stroke-width="1.5">
+          <rect x="3" y="11" width="18" height="11" rx="2"/>
+          <path d="M7 11V7a5 5 0 0110 0v4"/>
+        </svg>
+        <h3>Unrestricted</h3>
+        <p>Access any website, bypass filters and censorship.</p>
+      </div>
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f1855b" stroke-width="1.5">
+          <path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/>
+          <path d="M12 6v6l4 2"/>
+        </svg>
+        <h3>Private</h3>
+        <p>Traffic proxied through Scramjet's interception engine.</p>
+      </div>
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f1855b" stroke-width="1.5">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+        </svg>
+        <h3>Fast</h3>
+        <p>Service worker proxy with WASM rewriting for speed.</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        Powered by
+        <a href="https://github.com/MercuryWorkshop/scramjet" target="_blank" rel="noopener">Scramjet</a>
+        and
+        <a href="https://github.com/MercuryWorkshop" target="_blank" rel="noopener">Mercury Workshop</a>
+      </p>
+    </footer>
+  </div>
+
+  <div id="sj-frame-wrapper" class="frame-wrapper">
+    <div class="browser-bar">
+      <div class="nav-buttons">
+        <button id="sj-back" class="nav-btn" title="Back">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
+        <button id="sj-forward" class="nav-btn" title="Forward">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <button id="sj-reload" class="nav-btn" title="Reload">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+        </button>
+        <button id="sj-home" class="nav-btn" title="Home">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
+        </button>
+      </div>
+      <div id="sj-frame-url" class="frame-url"></div>
+      <button id="sj-close" class="nav-btn close-btn" title="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <iframe id="sj-frame" class="frame"></iframe>
+  </div>
+
+  <script src="/index.js"></script>
+</body>
+</html>

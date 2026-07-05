@@ -1,0 +1,287 @@
+:root {
+  --bg: #0f0f0f;
+  --bg-card: #1a1a1a;
+  --bg-input: #222;
+  --accent: #f1855b;
+  --accent-hover: #fdd76c;
+  --text: #f0f0f0;
+  --text-muted: #999;
+  --border: #333;
+  --radius: 8px;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeIn 0.6s ease;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.logo h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.tagline {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.search-section {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 3rem;
+  animation: fadeIn 0.8s ease;
+}
+
+.search-form {
+  position: relative;
+}
+
+.omnibox {
+  display: flex;
+  align-items: center;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 0 1rem;
+  transition: all 0.2s ease;
+}
+
+.omnibox:focus-within {
+  border-color: var(--accent);
+  border-radius: var(--radius);
+  box-shadow: 0 0 0 3px rgba(241, 133, 91, 0.1);
+}
+
+.search-icon {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  margin-right: 0.75rem;
+}
+
+#sj-address {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: 1rem;
+  font-family: inherit;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+#sj-address::placeholder {
+  color: var(--text-muted);
+}
+
+.features {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 800px;
+  margin-bottom: 3rem;
+  animation: fadeIn 1s ease;
+}
+
+.feature {
+  text-align: center;
+  max-width: 200px;
+}
+
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+}
+
+.feature h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.feature p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+footer {
+  margin-top: auto;
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+footer a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+/* Error display */
+.error {
+  color: #ff6666;
+  margin-top: 1rem;
+  text-align: center;
+  white-space: pre-wrap;
+}
+
+.error-code {
+  font-size: 0.75rem;
+  color: #ccc;
+  font-family: "Courier New", Courier, monospace;
+  margin-top: 0.5rem;
+  text-align: center;
+  white-space: pre-wrap;
+}
+
+/* Browser frame */
+.frame-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  flex-direction: column;
+  z-index: 9999;
+  background: var(--bg);
+}
+
+.browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #1a1a1a;
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.nav-btn:hover {
+  background: #2a2a2a;
+  color: var(--text);
+}
+
+.nav-btn:active {
+  transform: scale(0.95);
+}
+
+.close-btn {
+  margin-left: auto;
+  color: #ff6666;
+}
+
+.close-btn:hover {
+  background: rgba(255, 102, 102, 0.1);
+  color: #ff9999;
+}
+
+.frame-url {
+  flex: 1;
+  color: var(--text-muted);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 1rem;
+}
+
+.frame {
+  border: none;
+  flex: 1;
+  background: white;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .features {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .feature {
+    max-width: 100%;
+  }
+
+  .logo h1 {
+    font-size: 1.5rem;
+  }
+
+  .tagline {
+    font-size: 0.95rem;
+  }
+}
